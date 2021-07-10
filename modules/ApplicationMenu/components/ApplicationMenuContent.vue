@@ -7,7 +7,7 @@
     <div class="owd-desktop__application-menu__content__inner">
       <ApplicationMenuContentCategories
           :allow-keys-navigation="navigationKeysSection === 'categories'"
-          :categories="categories"
+          :categories="launcherCategories"
           :category-selected="categorySelected"
           @select="(category) => categorySelected = category"
           @setNavigationKeysSection="(value) => navigationKeysSection = value"
@@ -16,8 +16,6 @@
         <ApplicationMenuContentApps
             :allow-keys-navigation="navigationKeysSection === 'apps'"
             :apps="categoryApps"
-            :app-selected="appSelected"
-            @select="(app) => appSelected = app"
             @setNavigationKeysSection="(value) => navigationKeysSection = value"
             @menuClose="menuClose"
         />
@@ -40,17 +38,26 @@ const emit = defineEmit([
 
 const store = useStore()
 
-const appSelected = ref({})
 const categorySelected = ref('')
 
 // categories
-const categories = computed(() => store.getters['core/windowCategory/modulesAppWindowCategories'])
+const launcherCategories = computed(() => store.getters['core/launcher/categories'])
+const launcherItems = computed(() => store.getters['core/launcher/items'])
 
 // category > apps
 const categoryApps = computed(() => {
   if (!categorySelected.value) return []
 
-  return categories.value[categorySelected.value]
+  return launcherItems.value[categorySelected.value].sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+
+    return 0;
+  })
 })
 
 // key navigation section

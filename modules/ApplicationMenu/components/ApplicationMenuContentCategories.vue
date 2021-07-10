@@ -11,7 +11,7 @@
     <ul @mouseleave="(e) => categoryMouseOver(e, '')">
       <li
           :class="{selected: categorySelected === category}"
-          v-for="(appList, category) in categories"
+          v-for="(category) in categories"
           :key="category"
       >
         <button

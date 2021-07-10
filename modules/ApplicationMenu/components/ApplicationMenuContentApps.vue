@@ -1,6 +1,6 @@
 <template>
   <div
-      ref="applicationMenuList"
+      ref="elementApplicationList"
       class="owd-desktop__application-menu__list"
       @keyup.esc="$emit('menu-close')"
       @keyup.up="selectPrevApp"
@@ -10,24 +10,24 @@
   >
     <ul v-if="apps && apps.length > 0">
       <li
-          :class="{selected: appSelected.config === moduleAppWindow.config && allowKeysNavigation}"
+          :class="{selected: appSelected === moduleAppWindow && allowKeysNavigation}"
           v-for="(moduleAppWindow, i) of apps"
           :key="i"
       >
         <button
             @mouseover="(e) => appMouseOver(e, moduleAppWindow)"
-            @click="windowOpen(moduleAppWindow)"
+            @click="windowOpen(moduleAppWindow.callback)"
         >
           <div class="owd-desktop__application-menu__list__icon">
             <WindowIconMenu
-                v-if="moduleAppWindow.config.icon"
-                :icon="moduleAppWindow.config.icon"
-                :force-svg="moduleAppWindow.config.icon.forceMenuAppSvg"
+                v-if="moduleAppWindow.icon"
+                :icon="moduleAppWindow.icon"
+                :force-svg="moduleAppWindow.icon.forceMenuAppSvg"
                 is-application-menu
             />
           </div>
           <div class="owd-desktop__application-menu__list__name">
-            <div class="owd-desktop__application-menu__list__name-inner" v-html="moduleAppWindow.config.titleApp || moduleAppWindow.config.title"/>
+            <div class="owd-desktop__application-menu__list__name-inner" v-html="moduleAppWindow.title"/>
           </div>
         </button>
       </li>
@@ -41,7 +41,6 @@ import WindowIconMenu from "@owd-client/core/src/components/window/icon/WindowIc
 
 const props = defineProps({
   apps: Array,
-  appSelected: Object,
   allowKeysNavigation: Boolean
 })
 
@@ -52,23 +51,27 @@ const emit = defineEmit([
 ])
 
 // element ref
-const applicationMenuList = ref(null)
+const elementApplicationList = ref(null)
 
-async function windowOpen() {
+const appSelected = ref(null)
+
+async function windowOpen(callback: any) {
   emit('menu-close')
 
-  await props.appSelected.module.createWindow(props.appSelected.config)
+  if (typeof callback === 'function') {
+    callback()
+  }
 }
 
 // initial focus on buttons to enable key navigation
 watch(() => props.allowKeysNavigation, (active) => {
   selectNextApp()
 
-  if (active) {
-    if (!props.appSelected.name) {
-      applicationMenuList.value.querySelector('ul > li:first-child button').focus()
+  if (active && appSelected.value) {
+    if (!appSelected.value.title) {
+      elementApplicationList.value.querySelector('ul > li:first-child button').focus()
     } else {
-      nextTick(() => applicationMenuList.value.querySelector('ul > li.selected button').focus())
+      nextTick(() => elementApplicationList.value.querySelector('ul > li.selected button').focus())
     }
   }
 })
@@ -76,20 +79,20 @@ watch(() => props.allowKeysNavigation, (active) => {
 const selectPrevApp = () => {
   if (!props.allowKeysNavigation) return false
 
-  const currentIndex = props.apps.findIndex((app) => app.config === props.appSelected.config)
+  const currentIndex = props.apps.findIndex((app) => app === appSelected.value)
 
   if (currentIndex - 1 > -1) {
-    emit('select', props.apps[currentIndex - 1])
+    appSelected.value = props.apps[currentIndex - 1]
   }
 }
 
 const selectNextApp = () => {
   if (!props.allowKeysNavigation) return false
 
-  const currentIndex = props.apps.findIndex((app) => app.config === props.appSelected.config)
+  const currentIndex = props.apps.findIndex((app) => app === appSelected.value)
 
   if (currentIndex + 1 < props.apps.length) {
-    emit('select', props.apps[currentIndex + 1])
+    appSelected.value = props.apps[currentIndex + 1]
   }
 }
 
@@ -99,7 +102,7 @@ function appMouseOver(e: Event, moduleAppWindow: Object) {
 
   // set key navigations on apps
   emit('set-navigation-keys-section', 'apps')
-  emit('select', moduleAppWindow)
+  appSelected.value = moduleAppWindow
 }
 
 // key navigation
