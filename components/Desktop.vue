@@ -36,8 +36,6 @@ const desktopOptions = inject('desktopOptions')
 
 <style scoped lang="scss">
 .owd-desktop {
-  background: $owd-desktop-system-bar-background;
-
   &__system-bar {
     &--position-bottom {
       flex-direction: column-reverse;

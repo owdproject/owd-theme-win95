@@ -76,6 +76,7 @@ const closeSystemBarDesktopModule = (desktopModule) => {
 <style scoped lang="scss">
 .owd-desktop__system-bar {
   display: flex;
+  background: $owd-desktop-system-bar-background;
   color: $owd-desktop-system-bar-text;
   height: $owd-desktop-system-bar-height;
   line-height: $owd-desktop-system-bar-height - 2px;
