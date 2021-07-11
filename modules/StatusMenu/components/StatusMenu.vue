@@ -43,8 +43,13 @@ const props = defineProps({
   border-color: #828282 white white #828282;
   pointer-events: none;
 
-  &__icons i {
+  &__icons {
     margin: 0 8px 0 0;
+
+    i {
+      margin: 0;
+      font-size: 16px;
+    }
   }
 }
 </style>
