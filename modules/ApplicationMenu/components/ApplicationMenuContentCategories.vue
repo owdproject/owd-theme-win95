@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, inject, defineProps, defineEmit, nextTick, watch} from "vue";
+import {ref, inject, defineProps, defineEmits, nextTick, watch} from "vue";
 
 const desktopOptions = inject('desktopOptions')
 
@@ -38,7 +38,7 @@ const props = defineProps({
   allowKeysNavigation: Boolean
 })
 
-const emit = defineEmit([
+const emit = defineEmits([
   'menu-close',
   'select',
   'set-navigation-keys-section'

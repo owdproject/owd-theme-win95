@@ -26,13 +26,13 @@
 </template>
 
 <script setup lang="ts">
-import {computed, onMounted, ref, defineEmit} from 'vue'
+import {computed, onMounted, ref, defineEmits} from 'vue'
 import {useStore} from "vuex";
 import DesktopSystemBarMenuContent from '../../../components/SystemBar/components/SystemBarMenuContent.vue'
 import ApplicationMenuContentCategories from './ApplicationMenuContentCategories.vue'
 import ApplicationMenuContentApps from './ApplicationMenuContentApps.vue'
 
-const emit = defineEmit([
+const emit = defineEmits([
   'close'
 ])
 
