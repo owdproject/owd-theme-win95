@@ -2,9 +2,9 @@
 import Desktop from './components/Desktop.vue'
 
 // desktop modules
-import ApplicationMenu from "./modules/ApplicationMenu";
-import DockMenu from "./modules/DockMenu";
-import StatusMenu from "./modules/StatusMenu";
+import DesktopLauncher from "./modules/DesktopLauncher";
+import DesktopDock from "./modules/DesktopDock";
+import DesktopStatus from "./modules/DesktopStatus";
 
 export default {
   name: 'win95',
@@ -12,9 +12,9 @@ export default {
   component: Desktop,
 
   modules: [
-    ApplicationMenu,
-    DockMenu,
-    StatusMenu
+    DesktopLauncher,
+    DesktopDock,
+    DesktopStatus
   ],
 
   options: {
@@ -42,7 +42,7 @@ export default {
         'battery-100': 'mdi-battery'
       }
     },
-    StatusMenu: {
+    Status: {
       menu: {
         dateFormat: 'MMM D',
         timeFormat: 'HH:mm'

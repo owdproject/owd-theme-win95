@@ -5,7 +5,7 @@
   >
 
     <div class="owd-desktop__application-menu__content__inner">
-      <ApplicationMenuContentCategories
+      <DesktopLauncherContentCategories
           :allow-keys-navigation="navigationKeysSection === 'categories'"
           :categories="launcherCategories"
           :category-selected="categorySelected"
@@ -13,24 +13,24 @@
           @setNavigationKeysSection="(value) => navigationKeysSection = value"
           @menuClose="menuClose"
       >
-        <ApplicationMenuContentApps
+        <DesktopLauncherContentApps
             :allow-keys-navigation="navigationKeysSection === 'apps'"
             :apps="categoryApps"
             @setNavigationKeysSection="(value) => navigationKeysSection = value"
             @menuClose="menuClose"
         />
-      </ApplicationMenuContentCategories>
+      </DesktopLauncherContentCategories>
     </div>
 
   </DesktopSystemBarMenuContent>
 </template>
 
 <script setup lang="ts">
-import {computed, onMounted, ref, defineEmits} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import {useStore} from "vuex";
-import DesktopSystemBarMenuContent from '../../../components/SystemBar/components/SystemBarMenuContent.vue'
-import ApplicationMenuContentCategories from './ApplicationMenuContentCategories.vue'
-import ApplicationMenuContentApps from './ApplicationMenuContentApps.vue'
+import DesktopSystemBarMenuContent from '../../../components/DesktopSystemBar/components/DesktopSystemBarMenuContent.vue'
+import DesktopLauncherContentCategories from './DesktopLauncherContentCategories.vue'
+import DesktopLauncherContentApps from './DesktopLauncherContentApps.vue'
 
 const emit = defineEmits([
   'close'

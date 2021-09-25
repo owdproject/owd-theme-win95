@@ -1,12 +1,12 @@
 <template>
   <DesktopSystemBarMenuContent
-      v-if="$owd.desktopModules.list.StatusSystemBar && $owd.desktopModules.list.StatusSystemBar.default"
+      v-if="desktopModules.list.StatusSystemBar && desktopModules.list.StatusSystemBar.default"
       class="owd-desktop__status-menu__content"
       v-click-outside="menuClose"
   >
 
     <component
-        v-for="(desktopModule, i) of $owd.desktopModules.list.StatusSystemBar.default" :key="i"
+        v-for="(desktopModule, i) of desktopModules.list.StatusSystemBar.default" :key="i"
         :is="desktopModule.components.content"
         @close="menuClose"
     />
@@ -15,12 +15,14 @@
 </template>
 
 <script setup>
-import DesktopSystemBarMenuContent from '../../../components/SystemBar/components/SystemBarMenuContent.vue'
-import {defineEmits} from "vue";
+import DesktopSystemBarMenuContent from '../../../components/DesktopSystemBar/components/DesktopSystemBarMenuContent.vue'
+import {inject} from "vue";
 
 const emit = defineEmits([
   'close'
 ])
+
+const desktopModules = inject('desktopModules')
 
 function menuClose() {
   emit('close')

@@ -5,8 +5,8 @@
     <div class="owd-desktop__system-bar__left">
       <slot name="system-bar-left-prepend" />
 
-      <template v-if="$owd.desktopModules.list.SystemBar && $owd.desktopModules.list.SystemBar.left">
-        <template v-for="(desktopModule, i) of $owd.desktopModules.list.SystemBar.left" :key="i">
+      <template v-if="desktopModules.list.SystemBar && desktopModules.list.SystemBar.left">
+        <template v-for="(desktopModule, i) of desktopModules.list.SystemBar.left" :key="i">
           <component
               :is="desktopModule.components.menu"
               :config="desktopModule.config"
@@ -28,8 +28,8 @@
     <div class="owd-desktop__system-bar__right">
       <slot name="system-bar-right-prepend" />
 
-      <template v-if="$owd.desktopModules.list.SystemBar && $owd.desktopModules.list.SystemBar.right">
-        <template v-for="(desktopModule, i) of $owd.desktopModules.list.SystemBar.right" :key="i">
+      <template v-if="desktopModules.list.SystemBar && desktopModules.list.SystemBar.right">
+        <template v-for="(desktopModule, i) of desktopModules.list.SystemBar.right" :key="i">
           <component
               :is="desktopModule.components.menu"
               :config="desktopModule.config"
@@ -52,11 +52,13 @@
 </template>
 
 <script setup>
-import {defineProps} from 'vue';
+import {defineProps, inject} from 'vue';
 
 const props = defineProps({
   systemBar: Boolean
 })
+
+const desktopModules = inject('desktopModules')
 
 const openSystemBarDesktopModule = (event, desktopModule) => {
   // set desktop module opened

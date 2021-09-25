@@ -22,6 +22,8 @@
 
     <div class="owd-desktop__content">
       <slot/>
+
+      <WindowsContainer />
     </div>
   </DesktopBase>
 </template>
@@ -29,7 +31,8 @@
 <script setup>
 import {inject} from 'vue'
 import DesktopBase from '@owd-client/core/src/components/desktop/DesktopBase.vue'
-import SystemBar from "./SystemBar/SystemBar.vue";
+import WindowsContainer from '@owd-client/core/src/components/window/container/WindowsContainer.vue'
+import SystemBar from "./DesktopSystemBar/DesktopSystemBar.vue";
 
 const desktopOptions = inject('desktopOptions')
 </script>

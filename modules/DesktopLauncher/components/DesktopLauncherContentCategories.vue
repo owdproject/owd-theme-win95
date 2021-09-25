@@ -16,7 +16,7 @@
       >
         <button
             @mouseover="(e) => categoryMouseOver(e, category)"
-            v-text="$t(`desktop.SystemBar.ApplicationMenu.categories.${category}`)"
+            v-text="$t(`desktop.DesktopLauncher.categories.${category}`)"
         />
 
         <v-icon size="20">mdi-menu-right</v-icon>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, inject, defineProps, defineEmits, nextTick, watch} from "vue";
+import {ref, inject, nextTick, watch} from "vue";
 
 const desktopOptions = inject('desktopOptions')
 

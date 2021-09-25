@@ -1,16 +1,13 @@
 <template>
   <div class="owd-desktop__dock-menu">
 
-    <template
-        v-for="windowInstance of dock.items"
-        :key="windowInstance.uniqueID"
-    >
+    <template v-for="(window) of dock.list">
       <v-btn
           height="26"
-          :class="{'v-btn--active': !windowInstance.storage.minimized && windowInstance.storage.opened}"
-          @click="windowInstance.minimizeToggle()"
+          :class="{'v-btn--active': !window.storage.minimized && window.storage.opened}"
+          @click="windowToggle(window)"
       >
-        {{windowInstance.config.titleMenu || windowInstance.config.title}}
+        {{window.config.titleMenu || window.config.title}}
       </v-btn>
     </template>
 
@@ -18,30 +15,35 @@
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import {computed} from "vue";
 import {useStore} from "vuex";
-import DesktopSystemBarMenu from "../../../components/SystemBar/components/SystemBarMenu.vue";
-import StatusTime from "@owd-client/core/src/components/status/StatusTime.vue"
 
 const store = useStore()
 
-const dock = reactive({
-  items: []
-})
-
-store.subscribe((mutation) => {
-  if (mutation.type === `core/windowDock/ADD`) {
-    const windowInstance = mutation.payload
-    dock.items.push(windowInstance)
+const dock = computed(() => {
+  return {
+    apps: store.getters['core/dock/apps'],
+    list: store.getters['core/dock/list'],
   }
 })
 
-store.subscribe((mutation) => {
-  if (mutation.type === `core/windowDock/REMOVE`) {
-    const windowInstance = mutation.payload
-    dock.items.splice(dock.items.indexOf(windowInstance), 1)
+const windowToggle = async (windowInstance) => {
+  if (!windowInstance.storage) {
+    windowInstance = await windowInstance.module.registerWindow(windowInstance.config)
+    windowInstance.create(true)
+    windowInstance.open(true)
+
+    return true
   }
-})
+
+  if (windowInstance.storage.minimized || !windowInstance.storage.opened) {
+    windowInstance.open(true)
+  } else {
+    windowInstance.minimize()
+  }
+
+  return true
+}
 </script>
 
 <style scoped lang="scss">

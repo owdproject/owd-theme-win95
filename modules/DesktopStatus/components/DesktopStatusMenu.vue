@@ -3,12 +3,12 @@
     <div class="owd-desktop__status-menu">
 
       <div
-          v-if="$owd.desktopModules.list.StatusSystemBar && $owd.desktopModules.list.StatusSystemBar.default"
+          v-if="desktopModules.list.StatusSystemBar && desktopModules.list.StatusSystemBar.default"
           class="owd-desktop__status-menu__icons"
       >
 
         <component
-            v-for="(desktopModule, i) of $owd.desktopModules.list.StatusSystemBar.default" :key="i"
+            v-for="(desktopModule, i) of desktopModules.list.StatusSystemBar.default" :key="i"
             :is="desktopModule.components.menu"
             :config="desktopModule.config"
         />
@@ -23,13 +23,15 @@
 </template>
 
 <script setup>
-import DesktopSystemBarMenu from "../../../components/SystemBar/components/SystemBarMenu.vue";
+import DesktopSystemBarMenu from "../../../components/DesktopSystemBar/components/DesktopSystemBarMenu.vue";
 import StatusTime from "@owd-client/core/src/components/status/StatusTime.vue"
-import {defineProps} from "vue";
+import {defineProps, inject} from "vue";
 
 const props = defineProps({
   config: Object
 })
+
+const desktopModules = inject('desktopModules')
 </script>
 
 <style scoped lang="scss">
