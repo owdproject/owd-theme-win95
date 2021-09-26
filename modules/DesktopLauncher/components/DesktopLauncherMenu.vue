@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import {defineProps} from 'vue'
 import DesktopSystemBarMenu from "../../../components/DesktopSystemBar/components/DesktopSystemBarMenu.vue";
 
 defineProps({

@@ -25,7 +25,7 @@
 <script setup>
 import DesktopSystemBarMenu from "../../../components/DesktopSystemBar/components/DesktopSystemBarMenu.vue";
 import StatusTime from "@owd-client/core/src/components/status/StatusTime.vue"
-import {defineProps, inject} from "vue";
+import {inject} from "vue";
 
 const props = defineProps({
   config: Object
