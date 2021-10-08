@@ -29,8 +29,7 @@ const dock = computed(() => {
 
 const windowToggle = async (windowInstance) => {
   if (!windowInstance.storage) {
-    windowInstance = await windowInstance.module.registerWindow(windowInstance.config)
-    windowInstance.create(true)
+    windowInstance = await windowInstance.module.createWindow(windowInstance.config)
     windowInstance.open(true)
 
     return true
