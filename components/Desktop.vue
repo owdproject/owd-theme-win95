@@ -29,12 +29,17 @@
 </template>
 
 <script setup>
-import {inject} from 'vue'
+import {inject, onMounted} from 'vue'
 import DesktopBase from '@owd-client/core/src/components/desktop/DesktopBase.vue'
 import WindowsContainer from '@owd-client/core/src/components/window/container/WindowsContainer.vue'
 import SystemBar from "./DesktopSystemBar/DesktopSystemBar.vue";
+import {useDesktop} from "@owd-client/core/index";
 
+const owd = useDesktop()
 const desktopOptions = inject('desktopOptions')
+
+// send desktop:mounted event
+onMounted(() => owd.emit('owd/desktop:mounted'))
 </script>
 
 <style scoped lang="scss">
