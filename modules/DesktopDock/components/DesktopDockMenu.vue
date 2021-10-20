@@ -7,7 +7,7 @@
           :class="{'v-btn--active': !window.storage.minimized && window.storage.opened}"
           @click="windowToggle(window)"
       >
-        {{window.config.titleMenu || window.config.title}}
+        {{window.config.titleDock || window.config.title}}
       </v-btn>
     </template>
 
