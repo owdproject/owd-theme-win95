@@ -6,6 +6,8 @@ import DesktopLauncher from "./modules/DesktopLauncher";
 import DesktopDock from "./modules/DesktopDock";
 import DesktopStatus from "./modules/DesktopStatus";
 
+import locales from "./locales";
+
 export default {
   name: 'win95',
 
@@ -54,5 +56,7 @@ export default {
         }
       }
     }
-  }
+  },
+
+  locales
 }

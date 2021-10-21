@@ -16,7 +16,7 @@
       >
         <button
             @mouseover="(e) => categoryMouseOver(e, category)"
-            v-text="$t(`desktop.DesktopLauncher.categories.${category}`)"
+            v-text="$t(`DesktopApplicationCategories.${category}`)"
         />
 
         <v-icon size="20">mdi-menu-right</v-icon>
