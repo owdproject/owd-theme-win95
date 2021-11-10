@@ -3,12 +3,12 @@
     <div class="owd-desktop__status-menu">
 
       <div
-          v-if="desktopModules.list.StatusSystemBar && desktopModules.list.StatusSystemBar.default"
+          v-if="desktopModules.list.SystemBarStatus && desktopModules.list.SystemBarStatus.default"
           class="owd-desktop__status-menu__icons"
       >
 
         <component
-            v-for="(desktopModule, i) of desktopModules.list.StatusSystemBar.default" :key="i"
+            v-for="(desktopModule, i) of desktopModules.list.SystemBarStatus.default" :key="i"
             :is="desktopModule.components.menu"
             :config="desktopModule.config"
         />
