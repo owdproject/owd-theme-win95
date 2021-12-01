@@ -38,7 +38,7 @@ import {useDesktop} from "@owd-client/core/index";
 const owd = useDesktop()
 const desktopOptions = inject('desktopOptions')
 
-// send desktop:mounted event
+// desktop is ready
 onMounted(() => owd.emit('owd/desktop:mounted'))
 </script>
 

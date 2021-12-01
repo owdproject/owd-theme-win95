@@ -6,6 +6,10 @@ import DesktopLauncher from "./modules/DesktopLauncher";
 import DesktopDock from "./modules/DesktopDock";
 import DesktopStatus from "./modules/DesktopStatus";
 
+// plugins
+import Vuetify from "owd-plugin-vuetify/src"
+
+// i18n
 import locales from "./locales";
 
 export default {
@@ -17,6 +21,10 @@ export default {
     DesktopLauncher,
     DesktopDock,
     DesktopStatus
+  ],
+
+  plugins: [
+    Vuetify
   ],
 
   options: {
