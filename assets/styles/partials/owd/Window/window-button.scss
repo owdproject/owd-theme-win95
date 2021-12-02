@@ -1,19 +1,18 @@
 @import '../../vuetify/VBtn/mixins';
 
 .owd-window {
-  .owd-window__nav .v-btn {
+  .owd-window__nav .owd-btn {
     min-width: inherit;
     width: $owd-window-button-width;
     height: $owd-window-button-height;
-    padding: 0;
-    vertical-align: middle;
+    line-height: $owd-window-button-height;
 
-    &.btn-minimize .v-icon {
-      font-size: 10px;
+    .owd-icon {
+      font-size: $owd-window-button-icon-size;
     }
 
-    .v-icon {
-      font-size: $owd-window-button-icon-size;
+    &.owd-btn-minimize .owd-icon {
+      font-size: 10px;
     }
   }
 }

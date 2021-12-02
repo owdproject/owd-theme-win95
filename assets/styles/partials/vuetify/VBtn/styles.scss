@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .owd-desktop {
-  .v-btn {
+  .owd-btn, .v-btn {
     @include btn;
   }
 }
