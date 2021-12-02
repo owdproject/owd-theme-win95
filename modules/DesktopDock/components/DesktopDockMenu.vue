@@ -2,9 +2,9 @@
   <div class="owd-desktop__dock-menu">
 
     <template v-for="(window) of dock.list">
-      <v-btn
+      <v-btn :ripple="false"
           height="26"
-          :class="{'v-btn--active': !window.storage.minimized && window.storage.opened}"
+          :class="{'v-btn--active': !window.storage.minimized}"
           @click="windowToggle(window)"
       >
         {{window.config.titleDock || window.config.title}}

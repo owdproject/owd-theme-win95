@@ -1,6 +1,6 @@
 <template>
   <DesktopSystemBarMenu>
-    <v-btn height="26">
+    <v-btn :ripple="false" height="26">
       <span class="start-icon" />
       Start
     </v-btn>
