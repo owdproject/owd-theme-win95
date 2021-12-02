@@ -33,23 +33,23 @@ export default {
     },
     Window: {
       icons: {
-        minimize: 'mdi-color-helper',
-        maximize: 'mdi-window-maximize',
-        fullscreen: 'mdi-fullscreen',
-        close: 'mdi-window-close'
+        minimize: 'mdi mdi-color-helper',
+        maximize: 'mdi mdi-window-maximize',
+        fullscreen: 'mdi mdi-fullscreen',
+        close: 'mdi mdi-window-close'
       }
     },
     SystemBar: {
       enabled: true,
       position: 'bottom',
       icons: {
-        'battery': 'mdi-battery',
-        'battery-0': 'mdi-battery-alert-variant-outline',
-        'battery-20': 'mdi-battery-20',
-        'battery-40': 'mdi-battery-40',
-        'battery-60': 'mdi-battery-60',
-        'battery-80': 'mdi-battery-80',
-        'battery-100': 'mdi-battery'
+        'battery': 'mdi mdi-battery',
+        'battery-0': 'mdi mdi-battery-alert-variant-outline',
+        'battery-20': 'mdi mdi-battery-20',
+        'battery-40': 'mdi mdi-battery-40',
+        'battery-60': 'mdi mdi-battery-60',
+        'battery-80': 'mdi mdi-battery-80',
+        'battery-100': 'mdi mdi-battery'
       }
     },
     Status: {
