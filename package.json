@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@fontsource/oswald": "^4.4.5",
-    "owd-plugin-vuetify": "https://github.com/owdproject/owd-plugin-vuetify"
+    "owd-vuetify-plugin": "owdproject/owd-vuetify-plugin"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
