@@ -78,13 +78,13 @@ const closeSystemBarDesktopModule = (desktopModule) => {
 <style scoped lang="scss">
 .owd-desktop__system-bar {
   display: flex;
-  background: $owd-desktop-system-bar-background;
-  color: $owd-desktop-system-bar-text;
-  height: $owd-desktop-system-bar-height;
-  line-height: $owd-desktop-system-bar-height - 2px;
+  background: var(--owd-desktop-system-bar-background);
+  color: var(--owd-desktop-system-bar-text);
+  height: var(--owd-desktop-system-bar-height);
+  line-height: calc(var(--owd-desktop-system-bar-height) - 2px);
   padding: 0 2px;
   user-select: none;
-  border-top: 1px solid $owd-desktop-system-bar-background;
+  border-top: 1px solid var(--owd-desktop-system-bar-background);
   box-shadow: inset 0 1px 0 0 white;
   cursor: default;
 

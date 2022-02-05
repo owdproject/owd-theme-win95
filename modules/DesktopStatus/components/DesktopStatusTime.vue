@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, inject, ref } from 'vue'
 
-const desktopOptions = inject('desktopOptions')
+const desktopConfig = inject('desktopConfig')
 const props = defineProps({
   showDate: Boolean,
   dateFormat: {
@@ -26,7 +26,7 @@ const getDate = () => {
   return moment().format(props.dateFormat)
 }
 const getTime = () => {
-  return moment().format(desktopOptions.Status.menu.timeFormat)
+  return moment().format(desktopConfig.options.Status.menu.timeFormat)
 }
 let date = ref(getDate())
 let time = ref(getTime())

@@ -3,12 +3,12 @@
 .owd-window {
   .owd-window__nav .owd-btn {
     min-width: inherit;
-    width: $owd-window-button-width;
-    height: $owd-window-button-height;
-    line-height: $owd-window-button-height;
+    width: var(--owd-window-button-width);
+    height: var(--owd-window-button-height);
+    line-height: var(--owd-window-button-height);
 
     .owd-icon {
-      font-size: $owd-window-button-icon-size;
+      font-size: var(--owd-window-button-icon-size);
     }
 
     &.owd-btn-minimize .owd-icon {

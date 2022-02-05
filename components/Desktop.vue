@@ -1,9 +1,9 @@
 <template>
   <DesktopBase :class="{
-    'owd-desktop__system-bar--position-top': desktopOptions.SystemBar.position === 'top',
-    'owd-desktop__system-bar--position-bottom': desktopOptions.SystemBar.position === 'bottom',
+    'owd-desktop__system-bar--position-top': desktopConfig.options.SystemBar.position === 'top',
+    'owd-desktop__system-bar--position-bottom': desktopConfig.options.SystemBar.position === 'bottom',
   }">
-    <SystemBar v-if="desktopOptions.SystemBar.enabled">
+    <SystemBar v-if="desktopConfig.options.SystemBar.enabled">
 
       <!-- additional slots for left area system-bar -->
       <template v-slot:system-bar-left-append>
@@ -29,17 +29,21 @@
 </template>
 
 <script setup>
-import {inject, onMounted} from 'vue'
+import {inject} from 'vue'
 import DesktopBase from '@owd-client/core/src/components/desktop/DesktopBase.vue'
 import WindowsContainer from '@owd-client/core/src/components/window/container/WindowsContainer.vue'
 import SystemBar from "./DesktopSystemBar/DesktopSystemBar.vue";
-import {useDesktop} from "@owd-client/core/index";
+import {useDesktop} from "@owd-client/core";
 
 const owd = useDesktop()
-const desktopOptions = inject('desktopOptions')
+const desktopConfig = inject('desktopConfig')
 
-// desktop is ready
-onMounted(() => owd.emit('owd/desktop:mounted'))
+// load theme styles
+import('@mdi/font/css/materialdesignicons.css')
+import('../assets/styles/index.scss')
+
+// load theme variables
+import('../' + desktopConfig.variants[owd.config.theme?.variant ?? 'default'])
 </script>
 
 <style scoped lang="scss">
@@ -51,7 +55,7 @@ onMounted(() => owd.emit('owd/desktop:mounted'))
   }
 
   &__content {
-    background: $owd-background;
+    background: var(--owd-background);
   }
 }
 </style>

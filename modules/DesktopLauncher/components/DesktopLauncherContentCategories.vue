@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import {ref, inject, nextTick, watch} from "vue";
 
-const desktopOptions = inject('desktopOptions')
+const desktopConfig = inject('desktopConfig')
 
 const props = defineProps({
   categories: Object,
@@ -130,12 +130,12 @@ function setNavigationKeysSection(value: string) {
 
       &.selected {
         button {
-          background: $owd-window-item-background-hover;
-          color: $owd-window-item-text-color-hover;
+          background: var(--owd-window-item-background-hover);
+          color: var(--owd-window-item-text-color-hover);
         }
 
         .v-icon {
-          color: $owd-window-item-text-color-hover;
+          color: var(--owd-window-item-text-color-hover);
         }
       }
     }

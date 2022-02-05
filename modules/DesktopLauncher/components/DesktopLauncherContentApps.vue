@@ -116,10 +116,10 @@ function setNavigationKeysSection(value: string) {
   position: absolute;
   top: -2px;
   left: calc(100% - 4px);
-  background: $owd-window-button-background;
+  background: var(--owd-window-button-background);
   border: 1px solid;
-  border-color: $owd-window-button-border-color;
-  box-shadow: $owd-window-button-box-shadow;
+  border-color: var(--owd-window-button-border-color);
+  box-shadow: var(--owd-window-button-box-shadow);
   width: 220px;
   overflow-y: auto;
 
@@ -130,7 +130,7 @@ function setNavigationKeysSection(value: string) {
     line-height: 30px;
     text-align: center;
     vertical-align: middle;
-    color: $owd-window-item-text-color-hover;
+    color: var(--owd-window-item-text-color-hover);
     transform: scale(0.75);
   }
 
@@ -161,13 +161,13 @@ function setNavigationKeysSection(value: string) {
         cursor: pointer;
         line-height: 20px;
         padding: 0 5px;
-        background: $owd-window-item-background;
-        color: $owd-window-item-text-color;
+        background: var(--owd-window-item-background);
+        color: var(--owd-window-item-text-color);
       }
 
       &.selected button {
-        background: $owd-window-item-background-hover;
-        color: $owd-window-item-text-color-hover;
+        background: var(--owd-window-item-background-hover);
+        color: var(--owd-window-item-text-color-hover);
       }
     }
   }

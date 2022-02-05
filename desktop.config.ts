@@ -1,5 +1,6 @@
 // desktop component
 import Desktop from './components/Desktop.vue'
+import WindowApp from './components/Window/WindowApp.vue'
 
 // desktop modules
 import DesktopLauncher from "./modules/DesktopLauncher";
@@ -9,23 +10,16 @@ import DesktopStatus from "./modules/DesktopStatus";
 // plugins
 import Vuetify from "owd-vuetify-plugin/src"
 
-// i18n
+// locales
 import locales from "./locales";
 
 export default {
   name: 'win95',
+  compatibility: '2.0.0-beta.4',
 
-  component: Desktop,
-
-  modules: [
-    DesktopLauncher,
-    DesktopDock,
-    DesktopStatus
-  ],
-
-  plugins: [
-    Vuetify
-  ],
+  variants: {
+    'default': 'assets/styles/variants/default/variables.scss'
+  },
 
   options: {
     Logo: {
@@ -66,5 +60,20 @@ export default {
     }
   },
 
-  locales
+  locales,
+
+  components: {
+    'Desktop': Desktop,
+    'WindowApp': WindowApp
+  },
+
+  modules: [
+    DesktopLauncher,
+    DesktopDock,
+    DesktopStatus
+  ],
+
+  plugins: [
+    Vuetify
+  ]
 }
