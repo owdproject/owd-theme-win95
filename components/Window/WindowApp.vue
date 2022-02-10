@@ -1,37 +1,34 @@
 <template>
-  <Window style="border: 2px solid red;" :width="400" :height="300">
-    <div>
-      <button @click="emit('minimize')">Minimizza</button>
-      <button @click="emit('close')">Chiudi</button>
-    </div>
+  <WindowAppBase v-bind="props">
 
-    <div style="border: 1px solid red;">
+    <WindowAppNav
+        :window="props.window"
+        :title="props.window.config.title"
+    >
+
+      <template v-slot:nav-prepend>
+        <slot name="nav-prepend" />
+      </template>
+
+      <template v-slot:nav-append>
+        <slot name="nav-append" />
+      </template>
+
+    </WindowAppNav>
+
+    <div class="owd-window__content">
       <slot />
     </div>
-  </Window>
+
+  </WindowAppBase>
 </template>
 
 <script setup>
-const emit = defineEmits([
-  'mount',
-  'unmount',
-  'close',
-  'open',
-  'blur',
-  'focus',
-  'minimize',
-  'restore',
-  'maximize',
-  'unmaximize',
-  'resize:start',
-  'resize:move',
-  'resize:end',
-  'drag:start',
-  'drag:move',
-  'drag:end',
-])
+import {inject} from "vue";
+import WindowAppBase from '@owd-client/core/src/components/window/app/WindowAppBase.vue'
+const desktopConfig = inject('desktopConfig')
+
+const props = defineProps({
+  window: Object
+})
 </script>
-
-<style scoped>
-
-</style>

@@ -1,26 +1,86 @@
+@import '../../vuetify/VBtn/mixins';
+
 .owd-window {
   &__nav {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: var(--owd-window-nav-height);
+    line-height: var(--owd-window-nav-height);
+    border: var(--owd-window-nav-border);
+    border-color: var(--owd-window-nav-border-color-inactive);
+    background: var(--owd-window-nav-background-inactive);
+    color: var(--owd-window-nav-color-inactive);
+    box-shadow: var(--owd-window-nav-box-shadow-inactive);
+    box-sizing: content-box;
+    font-family: var(--owd-window-nav-title-font-family);
+    font-weight: var(--owd-window-nav-title-font-weight);
+    font-size: var(--owd-window-nav-title-font-size);
+    user-select: none;
+    z-index: 1;
+
+    &__draggable {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+    }
+
     &__title {
       text-align: left;
-      padding: 0 3px;
+      padding: 0 8px;
     }
 
     &__btn-group {
-      &--prepend {
-        left: 3px;
+      position: relative;
+      display: flex;
 
-        a, button {
+      &--prepend {
+        padding: 5px 0 5px 5px;
+        margin-right: -5px;
+
+        .owd-window__nav__btn {
           margin-right: 3px;
         }
       }
 
       &--append {
-        right: 3px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
 
-        a, button {
+        .owd-window__nav__btn {
           margin-left: 3px;
         }
       }
+    }
+
+    &__btn {
+      @include btn;
+      min-width: inherit;
+      width: var(--owd-window-button-width);
+      height: var(--owd-window-button-height);
+      line-height: var(--owd-window-button-height);
+
+      .owd-icon {
+        font-size: var(--owd-window-button-icon-size);
+      }
+
+      &.owd-window__nav__btn--minimize {
+        text-align: center;
+
+        .owd-icon {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  &--focused {
+    .owd-window__nav {
+      background: var(--owd-window-nav-background);
+      color: var(--owd-window-nav-color);
     }
   }
 }

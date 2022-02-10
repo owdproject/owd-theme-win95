@@ -25,6 +25,7 @@
 
       <WindowsContainer />
     </div>
+
   </DesktopBase>
 </template>
 

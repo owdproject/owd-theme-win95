@@ -12,6 +12,8 @@ import Vuetify from "owd-vuetify-plugin/src"
 
 // locales
 import locales from "./locales";
+import WindowAppNav from "./components/Window/WindowAppNav.vue";
+import WindowAppNavButton from "./components/Window/WindowAppNavButton.vue";
 
 export default {
   name: 'win95',
@@ -64,7 +66,9 @@ export default {
 
   components: {
     'Desktop': Desktop,
-    'WindowApp': WindowApp
+    'WindowApp': WindowApp,
+    'WindowAppNav': WindowAppNav,
+    'WindowAppNavButton': WindowAppNavButton
   },
 
   modules: [
